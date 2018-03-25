@@ -1,0 +1,80 @@
+package model;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+public class Data {
+
+    private Conexion con;
+    private String query;
+    private ResultSet rs;
+    private List<Marca> todasMarcas;
+    private List<Producto> todoProductos;
+    
+    public Data() throws ClassNotFoundException, SQLException{
+        con = new Conexion("Localhost", "root", "", "sofVenta");
+    }
+    
+    public List<Marca> getMarcas() throws SQLException{
+        query = "select * from marca";
+        
+        todasMarcas = new ArrayList<>();
+        
+        Marca m;
+        
+        rs = con.ejecutarSelect(query);
+        
+        while(rs.next()){
+            m = new Marca();
+            
+            m.setId(rs.getInt(1));
+            m.setNombre(rs.getString(2));
+            
+            todasMarcas.add(m);
+        }
+        con.desconectar();
+        
+        return todasMarcas;
+    }
+    
+    public List<Producto> getProductos() throws SQLException{
+        query = "select * from producto";
+        
+        todoProductos = new ArrayList<>();
+        
+        Producto p;
+        
+        rs = con.ejecutarSelect(query);
+        
+        while(rs.next()){
+            p = new Producto();
+            
+            p.setId(rs.getInt(1));
+            p.setNombre(rs.getString(2));
+            p.setMarca(rs.getInt(3));
+            p.setStock(rs.getInt(4));
+            p.setPrecio(rs.getInt(5));
+            
+            todoProductos.add(p);
+        }
+        con.desconectar();
+        
+        return todoProductos;
+    }
+    
+    public void eliminarProducto(Producto p) throws SQLException{
+        query = "delete from producto where id = "+p.getId();
+        
+        con.ejecutar(query);
+    }
+    
+    public void agregarproducto(Producto p) throws SQLException{
+        query = "insert into producto value(null,'"+p.getNombre()+"',"+p.getMarca()+","+p.getStock()+","+p.getPrecio()+")";
+        
+        con.ejecutar(query);
+    }
+    
+    
+}
