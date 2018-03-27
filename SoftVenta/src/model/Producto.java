@@ -8,6 +8,14 @@ public class Producto {
     private int stock;
     private int precio;
 
+    public Producto(String nombre, int marca, int stock, int precio) {
+        
+    }
+
+    Producto() {
+        
+    }
+
     public int getId() {
         return id;
     }

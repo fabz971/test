@@ -70,9 +70,10 @@ public class Data {
         con.ejecutar(query);
     }
     
-    public void agregarproducto(Producto p) throws SQLException{
-        query = "insert into producto value(null,'"+p.getNombre()+"',"+p.getMarca()+","+p.getStock()+","+p.getPrecio()+")";
+    public void agregarproducto(String nombre,int marca,int stock,int precio) throws SQLException{
+        query = "insert into producto value(null,'"+nombre+"',"+marca+","+stock+","+precio+")";
         
+        System.out.println(query);
         con.ejecutar(query);
     }
     
