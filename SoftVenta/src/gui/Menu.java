@@ -8,6 +8,8 @@ import javax.swing.JOptionPane;
 import model.Data;
 import model.Marca;
 import model.Producto;
+import model.ProductoSelect;
+import model.TMProductos;
 
 public class Menu extends javax.swing.JFrame {
 
@@ -48,11 +50,14 @@ public class Menu extends javax.swing.JFrame {
         btnCancelarCrearProd = new javax.swing.JButton();
         btnVolverMenu = new javax.swing.JButton();
         jFrameTodosProd = new javax.swing.JFrame();
+        jLabel7 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblProductos = new javax.swing.JTable();
         jFrameVenta = new javax.swing.JFrame();
         jLabel1 = new javax.swing.JLabel();
         btnCrearProducto = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnTodosProd = new javax.swing.JButton();
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Creacion De Productos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 1, 48))); // NOI18N
 
@@ -159,15 +164,43 @@ public class Menu extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jLabel7.setFont(new java.awt.Font("Times New Roman", 0, 48)); // NOI18N
+        jLabel7.setText("Productos");
+
+        tblProductos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(tblProductos);
+
         javax.swing.GroupLayout jFrameTodosProdLayout = new javax.swing.GroupLayout(jFrameTodosProd.getContentPane());
         jFrameTodosProd.getContentPane().setLayout(jFrameTodosProdLayout);
         jFrameTodosProdLayout.setHorizontalGroup(
             jFrameTodosProdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(jFrameTodosProdLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1)
+                .addContainerGap())
+            .addGroup(jFrameTodosProdLayout.createSequentialGroup()
+                .addGap(327, 327, 327)
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(334, Short.MAX_VALUE))
         );
         jFrameTodosProdLayout.setVerticalGroup(
             jFrameTodosProdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(jFrameTodosProdLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(124, 124, 124))
         );
 
         javax.swing.GroupLayout jFrameVentaLayout = new javax.swing.GroupLayout(jFrameVenta.getContentPane());
@@ -195,7 +228,12 @@ public class Menu extends javax.swing.JFrame {
 
         jButton1.setText("Venta De Productos");
 
-        jButton2.setText("Productos");
+        btnTodosProd.setText("Productos");
+        btnTodosProd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTodosProdActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -211,7 +249,7 @@ public class Menu extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(btnCrearProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(41, 41, 41)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnTodosProd, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(82, 82, 82)))
@@ -225,7 +263,7 @@ public class Menu extends javax.swing.JFrame {
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCrearProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnTodosProd, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(15, Short.MAX_VALUE))
@@ -274,6 +312,11 @@ public class Menu extends javax.swing.JFrame {
         this.setVisible(true);
     }//GEN-LAST:event_btnVolverMenuActionPerformed
 
+    private void btnTodosProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTodosProdActionPerformed
+        this.setVisible(false);
+        jFrameTodosProd.setVisible(true);
+    }//GEN-LAST:event_btnTodosProdActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -313,10 +356,10 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JButton btnCancelarCrearProd;
     private javax.swing.JButton btnCrearProdNew;
     private javax.swing.JButton btnCrearProducto;
+    private javax.swing.JButton btnTodosProd;
     private javax.swing.JButton btnVolverMenu;
     private javax.swing.JComboBox cboMarcaCrearProdNew;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JFrame jFrameCrearProd;
     private javax.swing.JFrame jFrameTodosProd;
     private javax.swing.JFrame jFrameVenta;
@@ -326,7 +369,10 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tblProductos;
     private javax.swing.JTextField txtNombreProdNew;
     private javax.swing.JTextField txtPrecioProdNew;
     private javax.swing.JTextField txtStockProdNew;
@@ -336,10 +382,13 @@ public class Menu extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
 
         jFrameCrearProd.setBounds(0, 0, 520, 630);
+        jFrameTodosProd.setBounds(0, 0, 900, 500);
 
         jFrameCrearProd.setLocationRelativeTo(null);
         jFrameTodosProd.setLocationRelativeTo(null);
         jFrameVenta.setLocationRelativeTo(null);
+        
+        cargarTabla();
     }
 
     private void cargarCommboBox() {
@@ -363,5 +412,15 @@ public class Menu extends javax.swing.JFrame {
         cboMarcaCrearProdNew.setSelectedIndex(0);
         txtStockProdNew.setText(null);
         txtPrecioProdNew.setText(null);
+    }
+    
+    private void cargarTabla(){
+        try {
+            List<ProductoSelect> listaProdSele = data.getProdSele();
+            TMProductos tm = new TMProductos(listaProdSele);
+            tblProductos.setModel(tm);
+        } catch (SQLException ex) {
+            Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

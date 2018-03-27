@@ -30,4 +30,6 @@ insert into producto value(null,"yoghurt",1,35,300);
 /*--------SELECT-------------*/
 select * from marca;
 select * from producto;
+
+select producto.id,producto.nombre,marca.nombre,producto.stock,producto.precio from marca,producto where producto.marca = marca.id;
 /*---------------------------*/

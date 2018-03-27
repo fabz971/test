@@ -12,6 +12,8 @@ public class Data {
     private ResultSet rs;
     private List<Marca> todasMarcas;
     private List<Producto> todoProductos;
+    private List<ProductoSelect> todoProductosSelec;
+    
     
     public Data() throws ClassNotFoundException, SQLException{
         con = new Conexion("Localhost", "root", "", "sofVenta");
@@ -62,6 +64,31 @@ public class Data {
         con.desconectar();
         
         return todoProductos;
+    }
+    
+    public List<ProductoSelect> getProdSele() throws SQLException{
+        query = "select producto.id,producto.nombre,marca.nombre,producto.stock,producto.precio from marca,producto where producto.marca = marca.id";
+        
+        todoProductosSelec = new ArrayList<>();
+        
+        ProductoSelect ps;
+        
+        rs = con.ejecutarSelect(query);
+        
+        while(rs.next()){
+            ps = new ProductoSelect();
+            
+            ps.setId(rs.getInt(1));
+            ps.setNombre(rs.getString(2));
+            ps.setMarca(rs.getString(3));
+            ps.setStock(rs.getInt(4));
+            ps.setPrecio(rs.getInt(5));
+            
+            todoProductosSelec.add(ps);
+        }
+        con.desconectar();
+        
+        return todoProductosSelec;
     }
     
     public void eliminarProducto(Producto p) throws SQLException{
