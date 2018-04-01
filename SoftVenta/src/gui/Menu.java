@@ -18,7 +18,7 @@ public class Menu extends javax.swing.JFrame {
     public Menu() {
         try {
             initComponents();
-
+            
             data = new Data();
 
             init();
@@ -53,6 +53,7 @@ public class Menu extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblProductos = new javax.swing.JTable();
+        btnVolver = new javax.swing.JButton();
         jFrameVenta = new javax.swing.JFrame();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -200,18 +201,31 @@ public class Menu extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tblProductos);
 
+        btnVolver.setText("Volver");
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jFrameTodosProdLayout = new javax.swing.GroupLayout(jFrameTodosProd.getContentPane());
         jFrameTodosProd.getContentPane().setLayout(jFrameTodosProdLayout);
         jFrameTodosProdLayout.setHorizontalGroup(
             jFrameTodosProdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jFrameTodosProdLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1)
+                .addGroup(jFrameTodosProdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jFrameTodosProdLayout.createSequentialGroup()
+                        .addGap(327, 327, 327)
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 300, Short.MAX_VALUE))
+                    .addGroup(jFrameTodosProdLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1)))
                 .addContainerGap())
             .addGroup(jFrameTodosProdLayout.createSequentialGroup()
-                .addGap(327, 327, 327)
-                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(334, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jFrameTodosProdLayout.setVerticalGroup(
             jFrameTodosProdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -219,8 +233,10 @@ public class Menu extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(124, 124, 124))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnVolver)
+                .addGap(212, 212, 212))
         );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
@@ -474,7 +490,8 @@ public class Menu extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        limpiarTXT();
+        cargarTabla();
     }//GEN-LAST:event_btnCrearProdNewActionPerformed
 
     private void btnCancelarCrearProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarCrearProdActionPerformed
@@ -496,6 +513,11 @@ public class Menu extends javax.swing.JFrame {
         this.setVisible(false);
         jFrameVenta.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+        jFrameTodosProd.setVisible(false);
+        this.setVisible(true);
+    }//GEN-LAST:event_btnVolverActionPerformed
 
     /**
      * @param args the command line arguments
@@ -538,6 +560,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JButton btnCrearProdNew;
     private javax.swing.JButton btnCrearProducto;
     private javax.swing.JButton btnTodosProd;
+    private javax.swing.JButton btnVolver;
     private javax.swing.JButton btnVolverMenu;
     private javax.swing.JComboBox cboMarcaCrearProdNew;
     private javax.swing.JButton jButton1;

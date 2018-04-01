@@ -16,7 +16,7 @@ public class Data {
     
     
     public Data() throws ClassNotFoundException, SQLException{
-        con = new Conexion("Localhost", "root", "", "sofVenta");
+        con = new Conexion("Localhost", "root", "123456", "sofVenta");
     }
     
     public List<Marca> getMarcas() throws SQLException{

@@ -16,7 +16,7 @@ public class Conexion {
         
         String protocolo = "jdbc:mysql://";
         String lineaUsuario = "user="+user;
-        String lineaPass = "password"+pass;
+        String lineaPass = "password="+pass;
         
         String url = protocolo + 
                 server + "/" + bdName 
