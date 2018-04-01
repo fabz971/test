@@ -77,7 +77,7 @@ public class Menu extends javax.swing.JFrame {
         lblPrecioProd = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         btnCrearProducto = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btnVenta = new javax.swing.JButton();
         btnTodosProd = new javax.swing.JButton();
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Creacion De Productos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 1, 48))); // NOI18N
@@ -271,6 +271,11 @@ public class Menu extends javax.swing.JFrame {
         jScrollPane3.setViewportView(tblCanasta);
 
         btnBuscarProd.setText("Buscar Producto");
+        btnBuscarProd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarProdActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Vaciar Canasta");
 
@@ -412,10 +417,10 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Venta De Productos");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnVenta.setText("Venta De Productos");
+        btnVenta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnVentaActionPerformed(evt);
             }
         });
 
@@ -435,7 +440,7 @@ public class Menu extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(107, 107, 107)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(btnCrearProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -456,7 +461,7 @@ public class Menu extends javax.swing.JFrame {
                     .addComponent(btnCrearProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnTodosProd, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(15, Short.MAX_VALUE))
         );
 
@@ -509,15 +514,20 @@ public class Menu extends javax.swing.JFrame {
         jFrameTodosProd.setVisible(true);
     }//GEN-LAST:event_btnTodosProdActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVentaActionPerformed
         this.setVisible(false);
         jFrameVenta.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+        cargarTablaActualizada(tblProdVEnta, "");
+    }//GEN-LAST:event_btnVentaActionPerformed
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         jFrameTodosProd.setVisible(false);
         this.setVisible(true);
     }//GEN-LAST:event_btnVolverActionPerformed
+
+    private void btnBuscarProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarProdActionPerformed
+        cargarTablaActualizada(tblProdVEnta, txtBuscarProd.getText());
+    }//GEN-LAST:event_btnBuscarProdActionPerformed
 
     /**
      * @param args the command line arguments
@@ -560,10 +570,10 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JButton btnCrearProdNew;
     private javax.swing.JButton btnCrearProducto;
     private javax.swing.JButton btnTodosProd;
+    private javax.swing.JButton btnVenta;
     private javax.swing.JButton btnVolver;
     private javax.swing.JButton btnVolverMenu;
     private javax.swing.JComboBox cboMarcaCrearProdNew;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -606,6 +616,7 @@ public class Menu extends javax.swing.JFrame {
 
         jFrameCrearProd.setBounds(0, 0, 520, 630);
         jFrameTodosProd.setBounds(0, 0, 900, 500);
+        jFrameVenta.setBounds(0, 0, 950, 900);
 
         jFrameCrearProd.setLocationRelativeTo(null);
         jFrameTodosProd.setLocationRelativeTo(null);
@@ -642,6 +653,15 @@ public class Menu extends javax.swing.JFrame {
             List<ProductoSelect> listaProdSele = data.getProdSele();
             TMProductos tm = new TMProductos(listaProdSele);
             tblProductos.setModel(tm);
+        } catch (SQLException ex) {
+            Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    private void cargarTablaActualizada(javax.swing.JTable tablaActual,String busqueda){
+        try {
+            List<ProductoSelect> listaProdSele = data.getProdSeleBusqueda(busqueda);
+            TMProductos tm = new TMProductos(listaProdSele);
+            tablaActual.setModel(tm);
         } catch (SQLException ex) {
             Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
         }

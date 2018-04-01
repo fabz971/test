@@ -16,7 +16,7 @@ public class Data {
     
     
     public Data() throws ClassNotFoundException, SQLException{
-        con = new Conexion("Localhost", "root", "123456", "sofVenta");
+        con = new Conexion("Localhost", "root", "", "sofVenta");
     }
     
     public List<Marca> getMarcas() throws SQLException{
@@ -69,6 +69,29 @@ public class Data {
     public List<ProductoSelect> getProdSele() throws SQLException{
         query = "select producto.id,producto.nombre,marca.nombre,producto.stock,producto.precio from marca,producto where producto.marca = marca.id";
         
+        todoProductosSelec = new ArrayList<>();
+        
+        ProductoSelect ps;
+        
+        rs = con.ejecutarSelect(query);
+        
+        while(rs.next()){
+            ps = new ProductoSelect();
+            
+            ps.setId(rs.getInt(1));
+            ps.setNombre(rs.getString(2));
+            ps.setMarca(rs.getString(3));
+            ps.setStock(rs.getInt(4));
+            ps.setPrecio(rs.getInt(5));
+            
+            todoProductosSelec.add(ps);
+        }
+        con.desconectar();
+        
+        return todoProductosSelec;
+    }
+    public List<ProductoSelect> getProdSeleBusqueda(String busqueda) throws SQLException{
+        query = "select producto.id,producto.nombre,marca.nombre,producto.stock,producto.precio from marca,producto where producto.marca = marca.id and (producto.nombre like '%"+busqueda+"%'or producto.id like '%"+busqueda+"%')";
         todoProductosSelec = new ArrayList<>();
         
         ProductoSelect ps;
