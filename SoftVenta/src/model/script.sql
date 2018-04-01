@@ -16,6 +16,13 @@ create table producto(
     foreign key(marca) references marca(id)
 );
 
+create table canasta(
+    id int auto_increment primary key,
+    producto int,
+    cantidad int,
+    foreign key(producto) references producto(id)
+);
+
 
 /*--------------INSERT-----------------*/
 insert into marca value(null,"Soprole");
