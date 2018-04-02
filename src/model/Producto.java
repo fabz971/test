@@ -8,9 +8,18 @@ public class Producto {
     private int stock;
     private int precio;
 
-    public Producto(String nombre, int marca, int stock, int precio) {
-        
+    public Producto(String nombre, int marca, int stock, int precio) {       
     }
+
+    public Producto(int id, String nombre, int marca, int stock, int precio) {
+        this.id = id;
+        this.nombre = nombre;
+        this.marca = marca;
+        this.stock = stock;
+        this.precio = precio;
+    }
+    
+    
 
     Producto() {
         

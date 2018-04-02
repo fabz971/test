@@ -16,7 +16,7 @@ public class Data {
     
     
     public Data() throws ClassNotFoundException, SQLException{
-        con = new Conexion("Localhost", "root", "", "sofVenta");
+        con = new Conexion("Localhost", "root", "123456", "sofVenta");
     }
     
     public List<Marca> getMarcas() throws SQLException{
@@ -117,6 +117,16 @@ public class Data {
     public void eliminarProducto(Producto p) throws SQLException{
         query = "delete from producto where id = "+p.getId();
         
+        con.ejecutar(query);
+    }
+    
+    public void actualizarProducto(Producto p) throws SQLException{
+        query = "update producto set nombre = '"
+                +p.getNombre()+"', marca = '"
+                +p.getMarca()+"', stock = '"
+                +p.getStock()+"', precio = '"
+                +p.getPrecio()+"' where id = '"
+                +p.getId()+"'";
         con.ejecutar(query);
     }
     
