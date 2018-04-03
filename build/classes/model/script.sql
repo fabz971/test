@@ -45,7 +45,6 @@ select * from marca;
 select * from producto;
 select * from canasta;
 
-select 
 select producto.id,producto.nombre,marca.nombre,producto.stock,producto.precio from marca,producto where producto.marca = marca.id;
 
 

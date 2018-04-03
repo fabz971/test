@@ -734,6 +734,7 @@ public class Menu extends javax.swing.JFrame {
     private void btnTodosProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTodosProdActionPerformed
         this.setVisible(false);
         jFrameTodosProd.setVisible(true);
+        cargarCommboBox();
     }//GEN-LAST:event_btnTodosProdActionPerformed
 
     private void btnVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVentaActionPerformed
@@ -1127,7 +1128,8 @@ public class Menu extends javax.swing.JFrame {
             List<Marca> listaMarcas = data.getMarcas();
 
             cboMarcaCrearProdNew.removeAllItems();
-
+            cboMarca.removeAllItems();
+            
             for (Marca ma : listaMarcas) {
                 cboMarcaCrearProdNew.addItem(ma);
                 cboMarca.addItem(ma);

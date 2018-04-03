@@ -16,7 +16,7 @@ public class Data {
     private List<Canasta> productosEnCanasta;
 
     public Data() throws ClassNotFoundException, SQLException {
-        con = new Conexion("Localhost", "root", "123456", "sofVenta");
+        con = new Conexion("Localhost", "root", "", "sofVenta");
     }
 
     public List<Marca> getMarcas() throws SQLException {
