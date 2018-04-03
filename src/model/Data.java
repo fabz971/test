@@ -92,7 +92,7 @@ public class Data {
     }
 
     public List<ProductoSelect> getProdSeleBusqueda(String busqueda) throws SQLException {
-        query = "select producto.id,producto.nombre,marca.nombre,producto.stock,producto.precio from marca,producto where producto.marca = marca.id and (producto.nombre like '%"+busqueda+"%'or producto.id like '%"+busqueda+"%')";
+        query = "select producto.id,producto.nombre,marca.nombre,producto.stock,producto.precio from marca,producto where producto.marca = marca.id and (producto.nombre like '%" + busqueda + "%'or producto.id like '%" + busqueda + "%')";
         todoProductosSelec = new ArrayList<>();
 
         ProductoSelect ps;
@@ -190,10 +190,19 @@ public class Data {
 //        con.desconectar();
 //        return aproximar(promedioNotas);
 //    }
-    public int sumarPrecio(){
-    int sumaPrecio = 0;
-    
-    return sumaPrecio;
+
+    public int sumarPrecio(int idCanasta, int idProd) throws SQLException {
+        int subtotal = 0;
+        query = "select producto.precio, canasta.cantidad , (producto.precio * canasta.cantidad) from producto,canasta where canasta.producto ='"+idCanasta+"' and producto.id ='"+idProd+"'";
+        
+        rs= con.ejecutarSelect(query);
+        
+        while(rs.next()){
+            subtotal = subtotal+(rs.getInt(3));
+            
+        }
+        con.desconectar();
+        return subtotal;
     }
 
     public void canastaCancelada() throws SQLException {
