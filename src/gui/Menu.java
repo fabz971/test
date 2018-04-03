@@ -52,6 +52,7 @@ public class Menu extends javax.swing.JFrame {
         btnCrearProdNew = new javax.swing.JButton();
         btnCancelarCrearProd = new javax.swing.JButton();
         btnVolverMenu = new javax.swing.JButton();
+        btnCambiaMarca = new javax.swing.JButton();
         jFrameTodosProd = new javax.swing.JFrame();
         jLabel7 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -95,6 +96,11 @@ public class Menu extends javax.swing.JFrame {
         lblIdProd = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         lblTotal = new javax.swing.JLabel();
+        jFrameCrearMarca = new javax.swing.JFrame();
+        jLabel20 = new javax.swing.JLabel();
+        txtNomMarca = new javax.swing.JTextField();
+        btnCrearMarca = new javax.swing.JButton();
+        btnAtrasProduc = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         btnCrearProducto = new javax.swing.JButton();
         btnVenta = new javax.swing.JButton();
@@ -109,6 +115,24 @@ public class Menu extends javax.swing.JFrame {
         jLabel4.setText("Stock: ");
 
         jLabel5.setText("Precio: ");
+
+        txtNombreProdNew.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNombreProdNewKeyTyped(evt);
+            }
+        });
+
+        txtStockProdNew.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtStockProdNewKeyTyped(evt);
+            }
+        });
+
+        txtPrecioProdNew.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPrecioProdNewKeyTyped(evt);
+            }
+        });
 
         jLabel6.setText("$");
 
@@ -133,14 +157,22 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
+        btnCambiaMarca.setText("Crear una Marca");
+        btnCambiaMarca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCambiaMarcaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(112, 112, 112)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnCambiaMarca, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel2)
                             .addComponent(jLabel5)
@@ -154,9 +186,9 @@ public class Menu extends javax.swing.JFrame {
                             .addComponent(txtPrecioProdNew, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cboMarcaCrearProdNew, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtNombreProdNew, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(btnCrearProdNew, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnCancelarCrearProd, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnVolverMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnCrearProdNew, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnCancelarCrearProd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnVolverMenu, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(123, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -183,7 +215,9 @@ public class Menu extends javax.swing.JFrame {
                 .addComponent(btnCrearProdNew, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnCancelarCrearProd, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(btnCambiaMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(btnVolverMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -565,6 +599,34 @@ public class Menu extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jFrameCrearMarca.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel20.setText("Ingrese Marca:");
+        jFrameCrearMarca.getContentPane().add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 38, -1, -1));
+
+        txtNomMarca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNomMarcaActionPerformed(evt);
+            }
+        });
+        jFrameCrearMarca.getContentPane().add(txtNomMarca, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 35, 120, -1));
+
+        btnCrearMarca.setText("Crear ");
+        btnCrearMarca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCrearMarcaActionPerformed(evt);
+            }
+        });
+        jFrameCrearMarca.getContentPane().add(btnCrearMarca, new org.netbeans.lib.awtextra.AbsoluteConstraints(169, 89, -1, -1));
+
+        btnAtrasProduc.setText("Volver");
+        btnAtrasProduc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAtrasProducActionPerformed(evt);
+            }
+        });
+        jFrameCrearMarca.getContentPane().add(btnAtrasProduc, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, -1, -1));
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
@@ -850,6 +912,7 @@ public class Menu extends javax.swing.JFrame {
         totalPagar = 0;
         lblTotal.setText(null);
         cargarTablaActualizada(tblProdVEnta, "");
+        cargarTabla();
     }//GEN-LAST:event_btnVenderActionPerformed
 
     private void btnVolverMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverMActionPerformed
@@ -878,6 +941,64 @@ public class Menu extends javax.swing.JFrame {
         cargarCanasta();
         cargarTablaActualizada(tblProdVEnta, "");
     }//GEN-LAST:event_btnVaciarActionPerformed
+
+    private void txtNombreProdNewKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreProdNewKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        if((c<'a'|| c>'z') && (c<'A')| c>'Z')evt.consume();
+    }//GEN-LAST:event_txtNombreProdNewKeyTyped
+
+    private void txtStockProdNewKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtStockProdNewKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        if(c<'0'|| c>'9')evt.consume();
+    }//GEN-LAST:event_txtStockProdNewKeyTyped
+
+    private void txtPrecioProdNewKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPrecioProdNewKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        if(c<'0'|| c>'9')evt.consume();
+    }//GEN-LAST:event_txtPrecioProdNewKeyTyped
+
+    private void btnCambiaMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCambiaMarcaActionPerformed
+        jFrameCrearProd.setVisible(false);
+        jFrameCrearMarca.setVisible(true);
+    }//GEN-LAST:event_btnCambiaMarcaActionPerformed
+
+    private void txtNomMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomMarcaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNomMarcaActionPerformed
+
+    private void btnAtrasProducActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasProducActionPerformed
+        jFrameCrearMarca.setVisible(false);
+        jFrameCrearProd.setVisible(true);
+        
+        txtNomMarca.setText(null);
+    }//GEN-LAST:event_btnAtrasProducActionPerformed
+
+    private void btnCrearMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearMarcaActionPerformed
+        try {
+            String nombre;
+            nombre = txtNomMarca.getText();
+            
+            Marca nuevaMarca;
+//            System.out.println(nombre);
+            nuevaMarca = new Marca(nombre);
+            
+            data.agregarMarca(nuevaMarca);
+            
+            cargarCommboBox();
+            txtNomMarca.setText(null);
+//
+//        try {
+//            data.agregarMarca(nuevaMarca);
+//        } catch (SQLException ex) {
+//            Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+        } catch (SQLException ex) {
+            Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnCrearMarcaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -916,8 +1037,11 @@ public class Menu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregarProducto;
+    private javax.swing.JButton btnAtrasProduc;
     private javax.swing.JButton btnBuscarProd;
+    private javax.swing.JButton btnCambiaMarca;
     private javax.swing.JButton btnCancelarCrearProd;
+    private javax.swing.JButton btnCrearMarca;
     private javax.swing.JButton btnCrearProdNew;
     private javax.swing.JButton btnCrearProducto;
     private javax.swing.JButton btnTodosProd;
@@ -930,6 +1054,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JButton btnVolverMenu;
     private javax.swing.JComboBox cboMarca;
     private javax.swing.JComboBox cboMarcaCrearProdNew;
+    private javax.swing.JFrame jFrameCrearMarca;
     private javax.swing.JFrame jFrameCrearProd;
     private javax.swing.JFrame jFrameTodosProd;
     private javax.swing.JFrame jFrameVenta;
@@ -945,6 +1070,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -971,6 +1097,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JTextField txtCantidadProd;
     private javax.swing.JTextField txtID;
     private javax.swing.JTextField txtName;
+    private javax.swing.JTextField txtNomMarca;
     private javax.swing.JTextField txtNombreProdNew;
     private javax.swing.JTextField txtPrecio;
     private javax.swing.JTextField txtPrecioProdNew;
@@ -980,14 +1107,15 @@ public class Menu extends javax.swing.JFrame {
 
     private void init() throws SQLException {
         this.setLocationRelativeTo(null);
-
+        jFrameCrearMarca.setBounds(0, 0, 400, 500);
         jFrameCrearProd.setBounds(0, 0, 520, 630);
         jFrameTodosProd.setBounds(0, 0, 900, 500);
-        jFrameVenta.setBounds(0, 0, 950, 900);
+        jFrameVenta.setBounds(0, 0, 850, 900);
 
         jFrameCrearProd.setLocationRelativeTo(null);
         jFrameTodosProd.setLocationRelativeTo(null);
         jFrameVenta.setLocationRelativeTo(null);
+        jFrameCrearMarca.setLocationRelativeTo(null);
 
         cargarTabla();
         data.canastaCancelada();

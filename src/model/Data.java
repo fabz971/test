@@ -157,14 +157,20 @@ public class Data {
     }
 
     public void agregarproducto(String nombre, int marca, int stock, int precio) throws SQLException {
-        query = "insert into producto value(null,'" + nombre + "'," + marca + "," + stock + "," + precio + ")";
+        query = "insert into producto values(null,'" + nombre + "'," + marca + "," + stock + "," + precio + ")";
 
         System.out.println(query);
         con.ejecutar(query);
     }
 
     public void agregarproductoCanasta(int producto, int cantidad) throws SQLException {
-        query = "insert into canasta value(null,'" + producto + "'," + cantidad + ")";
+        query = "insert into canasta values(null,'" + producto + "'," + cantidad + ")";
+        System.out.println(query);
+        con.ejecutar(query);
+    }
+
+    public void agregarMarca(Marca m) throws SQLException {
+        query = "insert into marca values(null,'" + m.getNombre() + "')";
         System.out.println(query);
         con.ejecutar(query);
     }
@@ -193,13 +199,13 @@ public class Data {
 
     public int sumarPrecio(int idCanasta, int idProd) throws SQLException {
         int subtotal = 0;
-        query = "select producto.precio, canasta.cantidad , (producto.precio * canasta.cantidad) from producto,canasta where canasta.producto ='"+idCanasta+"' and producto.id ='"+idProd+"'";
-        
-        rs= con.ejecutarSelect(query);
-        
-        while(rs.next()){
-            subtotal = subtotal+(rs.getInt(3));
-            
+        query = "select producto.precio, canasta.cantidad , (producto.precio * canasta.cantidad) from producto,canasta where canasta.producto ='" + idCanasta + "' and producto.id ='" + idProd + "'";
+
+        rs = con.ejecutarSelect(query);
+
+        while (rs.next()) {
+            subtotal = subtotal + (rs.getInt(3));
+
         }
         con.desconectar();
         return subtotal;
